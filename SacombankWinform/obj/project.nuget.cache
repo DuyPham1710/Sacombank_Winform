@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "SCTwu9yxLFo=",
+  "success": true,
+  "projectFilePath": "D:\\CODE\\C#\\SacombankWinform\\SacombankWinform\\SacombankWinform.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Duy\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
+    "C:\\Users\\Duy\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
+    "C:\\Users\\Duy\\.nuget\\packages\\htmlagilitypack\\1.12.3\\htmlagilitypack.1.12.3.nupkg.sha512"
+  ],
+  "logs": []
+}
