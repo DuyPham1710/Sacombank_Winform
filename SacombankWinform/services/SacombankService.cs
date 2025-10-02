@@ -2,10 +2,13 @@
 using SacombankWinform.helper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace SacombankWinform.services
 {
@@ -15,7 +18,7 @@ namespace SacombankWinform.services
         private readonly CookieContainer _cookieJar = new CookieContainer();
         private HttpClient _httpClient;
         private HtmlAgilityPack.HtmlDocument _doc;
-       
+      
         public SacombankService()
         {
             InitHttpClient();
@@ -26,6 +29,7 @@ namespace SacombankWinform.services
             var handler = new HttpClientHandler
             {
                 UseCookies = true,
+                AllowAutoRedirect = true,
                 CookieContainer = _cookieJar,
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
@@ -37,17 +41,23 @@ namespace SacombankWinform.services
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public async Task LoadLoginPageAsync(string url)
+        public void updateHtml(string html)
         {
+         //   File.WriteAllText("debugLogin2.html", html);
+            _doc = new HtmlAgilityPack.HtmlDocument();
+            _doc.LoadHtml(html);
+        }
+        public async Task LoadLoginPageAsync(string url)
+        {       
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string html = await response.Content.ReadAsStringAsync();
-
+         //   File.WriteAllText("debug.html", html);
             _doc = new HtmlAgilityPack.HtmlDocument();
             _doc.LoadHtml(html);
         }
 
-        public async Task<Image?> LoadCaptchaImageAsync(string baseUrl)
+        public async Task<System.Drawing.Image?> LoadCaptchaImageAsync(string baseUrl)
         {
             if (_doc == null) return null;
 
@@ -75,7 +85,14 @@ namespace SacombankWinform.services
             await imgResponse.Content.CopyToAsync(ms);
             ms.Position = 0;
 
-            return Image.FromStream(ms);
+            return System.Drawing.Image.FromStream(ms);
+        }
+
+        public async Task<System.Drawing.Image?> RefreshCaptchaImageAsync(string baseUrl)
+        {
+            await LoadLoginPageAsync(baseUrl);
+
+            return await LoadCaptchaImageAsync(baseUrl);
         }
 
         public string? GetActionUrl(string baseUrl)
@@ -93,7 +110,7 @@ namespace SacombankWinform.services
             return actionUri.ToString();
         }
 
-        public async Task<string> CallLoginApiAsync(Login1RequestDto dto, string actionUrl)
+        public async Task<string> CallLoginApiAsync<T>(T dto, string actionUrl)
         {
             var content = FormHelper.ToFormData(dto);
             HttpResponseMessage response = await _httpClient.PostAsync(actionUrl, content);
@@ -107,5 +124,19 @@ namespace SacombankWinform.services
             _httpClient?.Dispose();
         }
 
+        public string? GetJsEncryptKey()
+        {
+            var node = _doc.DocumentNode.SelectSingleNode("//input[@id='__JS_ENCRYPT_KEY__']");
+            return node?.GetAttributeValue("value", "");
+        }
+
+        public Dictionary<String, String> HandleEncryptPassword(string password)
+        {
+            var result = new Dictionary<string, string>();
+
+        
+
+            return result;
+        }
     }
 }

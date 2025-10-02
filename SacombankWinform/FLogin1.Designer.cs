@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FLogin1));
             panel1 = new Panel();
             panel2 = new Panel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconRefresh = new FontAwesome.Sharp.IconButton();
             pictureBoxCaptcha = new PictureBox();
             label1 = new Label();
             btnLogin = new Button();
@@ -59,7 +59,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(iconButton1);
+            panel2.Controls.Add(iconRefresh);
             panel2.Controls.Add(pictureBoxCaptcha);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(btnLogin);
@@ -71,16 +71,17 @@
             panel2.Size = new Size(466, 530);
             panel2.TabIndex = 1;
             // 
-            // iconButton1
+            // iconRefresh
             // 
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Refresh;
-            iconButton1.IconColor = Color.DodgerBlue;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(396, 192);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(43, 44);
-            iconButton1.TabIndex = 6;
-            iconButton1.UseVisualStyleBackColor = true;
+            iconRefresh.IconChar = FontAwesome.Sharp.IconChar.Refresh;
+            iconRefresh.IconColor = Color.DodgerBlue;
+            iconRefresh.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconRefresh.Location = new Point(396, 192);
+            iconRefresh.Name = "iconRefresh";
+            iconRefresh.Size = new Size(43, 44);
+            iconRefresh.TabIndex = 6;
+            iconRefresh.UseVisualStyleBackColor = true;
+            iconRefresh.Click += iconRefresh_Click;
             // 
             // pictureBoxCaptcha
             // 
@@ -103,6 +104,7 @@
             // btnLogin
             // 
             btnLogin.BackColor = Color.DodgerBlue;
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(57, 323);
@@ -157,6 +159,7 @@
             ClientSize = new Size(1398, 766);
             Controls.Add(panel1);
             Name = "FLogin1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FLogin1";
             Load += FSignup1_Load;
             panel1.ResumeLayout(false);
@@ -178,6 +181,6 @@
         private Button btnLogin;
         private CheckBox checkBox1;
         private PictureBox pictureBoxCaptcha;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconRefresh;
     }
 }

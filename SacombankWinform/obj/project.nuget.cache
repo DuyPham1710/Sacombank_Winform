@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "SCTwu9yxLFo=",
+  "dgSpecHash": "xmO8K66WPgc=",
   "success": true,
-  "projectFilePath": "D:\\CODE\\C#\\SacombankWinform\\SacombankWinform\\SacombankWinform.csproj",
+  "projectFilePath": "D:\\Intern\\SacombankWinform\\SacombankWinform\\SacombankWinform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Duy\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\Duy\\.nuget\\packages\\fontawesome.sharp\\6.6.0\\fontawesome.sharp.6.6.0.nupkg.sha512",
-    "C:\\Users\\Duy\\.nuget\\packages\\htmlagilitypack\\1.12.3\\htmlagilitypack.1.12.3.nupkg.sha512"
+    "C:\\Users\\Duy\\.nuget\\packages\\htmlagilitypack\\1.12.3\\htmlagilitypack.1.12.3.nupkg.sha512",
+    "C:\\Users\\Duy\\.nuget\\packages\\microsoft.web.webview2\\1.0.3485.44\\microsoft.web.webview2.1.0.3485.44.nupkg.sha512"
   ],
   "logs": []
 }

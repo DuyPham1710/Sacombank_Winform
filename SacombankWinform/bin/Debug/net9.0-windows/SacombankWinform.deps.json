@@ -10,7 +10,11 @@
         "dependencies": {
           "FontAwesome": "4.7.0",
           "FontAwesome.Sharp": "6.6.0",
-          "HtmlAgilityPack": "1.12.3"
+          "HtmlAgilityPack": "1.12.3",
+          "Microsoft.Web.WebView2": "1.0.3485.44",
+          "Microsoft.Web.WebView2.Core": "1.0.3485.44",
+          "Microsoft.Web.WebView2.WinForms": "1.0.3485.44",
+          "Microsoft.Web.WebView2.Wpf": "1.0.3485.44"
         },
         "runtime": {
           "SacombankWinform.dll": {}
@@ -30,6 +34,49 @@
           "lib/net7.0/HtmlAgilityPack.dll": {
             "assemblyVersion": "1.12.3.0",
             "fileVersion": "1.12.3.0"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2/1.0.3485.44": {
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/WebView2Loader.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.0.3485.44"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.3485.44"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.3485.44"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.Core/1.0.3485.44": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Core.dll": {
+            "assemblyVersion": "1.0.3485.44",
+            "fileVersion": "1.0.3485.44"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.WinForms/1.0.3485.44": {
+        "runtime": {
+          "Microsoft.Web.WebView2.WinForms.dll": {
+            "assemblyVersion": "1.0.3485.44",
+            "fileVersion": "1.0.3485.44"
+          }
+        }
+      },
+      "Microsoft.Web.WebView2.Wpf/1.0.3485.44": {
+        "runtime": {
+          "Microsoft.Web.WebView2.Wpf.dll": {
+            "assemblyVersion": "1.0.3485.44",
+            "fileVersion": "1.0.3485.44"
           }
         }
       }
@@ -61,6 +108,28 @@
       "sha512": "sha512-NyckYLSQBI5fB9YH5XN94EGfidD5FgaKnfmGqApKQYBaf3fFmv9KGodl5kvUZg/QLz+/M4rE7vwUig25eA8PqQ==",
       "path": "htmlagilitypack/1.12.3",
       "hashPath": "htmlagilitypack.1.12.3.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2/1.0.3485.44": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4hk+MDJcW6Hcvtfb0qv0zba9mpBFxM2GO9gJ+8Nq/zoAdwFanmt7jzvM07NPB/UcuQ/jZpKh9IUDL/eVOEFh2A==",
+      "path": "microsoft.web.webview2/1.0.3485.44",
+      "hashPath": "microsoft.web.webview2.1.0.3485.44.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2.Core/1.0.3485.44": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.WinForms/1.0.3485.44": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Web.WebView2.Wpf/1.0.3485.44": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

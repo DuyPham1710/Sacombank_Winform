@@ -1,4 +1,8 @@
-﻿using SacombankWinform.dto;
+﻿using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
+using SacombankWinform.Constants;
+using SacombankWinform.dto;
+using SacombankWinform.helper;
 using SacombankWinform.services;
 using System;
 using System.Collections.Generic;
@@ -6,7 +10,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,28 +21,81 @@ namespace SacombankWinform
     public partial class FLogin2 : Form
     {
         SacombankService _sacombankService;
-        public FLogin2(string username)
+        private string html;
+        public FLogin2(string username, string html)
         {
             InitializeComponent();
             _sacombankService = new SacombankService();
             txtUsername.Text = username;
+            this.html = html;
+
+            this.AcceptButton = btnLogin;
         }
+
         private void FLogin2_Load(object sender, EventArgs e)
         {
+            _sacombankService.updateHtml(html);
+            //     await _sacombankService.LoadLoginPageAsync(urlFormLogin1);
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             string isChecked = "N";
             if (cbVerify.Checked)
             {
                 isChecked = "Y";
             }
+            else
+            {
+                MessageBox.Show("Quý khách vui lòng xác nhận Hình ảnh và Ghi chú trước khi tiếp tục", "Thông báo");
+                return;
+            }
+            var encryptKey = _sacombankService.GetJsEncryptKey();
 
-            var dto = new Login2RequestDto(isChecked, txtUsername.Text, "", "", "");
+            var encryptedValues = JCryptionHelper.EncryptLogin(txtPassword.Text, encryptKey);
 
-            
+            string dummy1 = encryptedValues["dummy1"];
+            string accessCode = encryptedValues["AuthenticationFG.ACCESS_CODE"];
+            string dummy2 = encryptedValues["dummy2"];
+
+            //      MessageBox.Show("dummy1: " + dummy1 + " \naccess_code: " + accessCode + " \ndummy2: " + dummy2);
+
+            var dto = new Login2RequestDto(isChecked, txtUsername.Text, dummy1, accessCode, dummy2);
+
+            var actionUrl = _sacombankService.GetActionUrl(GlConstants.ORIGINAL_BASE_URL);
+
+            if (string.IsNullOrEmpty(actionUrl)) return;
+
+
+            string response;
+            try
+            {
+                response = await _sacombankService.CallLoginApiAsync(dto, actionUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+                return;
+            }
+
+            if (response.Contains("APPLICATION SECURITY ERROR"))
+            {
+                MessageBox.Show("unauthorized");
+                this.Close();
+            }
+            else if (response.Contains("Lỗi Thông báo"))
+            {
+                MessageBox.Show("Invalid Password");
+                _sacombankService.updateHtml(response);
+            }
+            else
+            {
+                FHome fHome = new FHome();
+                this.Hide();
+                fHome.ShowDialog();
+                this.Close();
+            }
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -50,5 +109,9 @@ namespace SacombankWinform
             base.OnFormClosed(e);
         }
 
+        private void btnReEnter_Click(object sender, EventArgs e)
+        {
+            txtPassword.Text = string.Empty;
+        }
     }
 }

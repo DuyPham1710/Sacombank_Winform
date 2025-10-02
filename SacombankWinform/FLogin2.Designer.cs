@@ -33,7 +33,7 @@
             panel2 = new Panel();
             txtPassword = new TextBox();
             btnBack = new Button();
-            button1 = new Button();
+            btnReEnter = new Button();
             cbVerify = new CheckBox();
             pictureBox2 = new PictureBox();
             label2 = new Label();
@@ -62,7 +62,7 @@
             panel2.BackColor = Color.White;
             panel2.Controls.Add(txtPassword);
             panel2.Controls.Add(btnBack);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnReEnter);
             panel2.Controls.Add(cbVerify);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label2);
@@ -78,6 +78,7 @@
             // 
             txtPassword.Location = new Point(57, 414);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.PlaceholderText = "MẬT KHẨU";
             txtPassword.Size = new Size(353, 27);
             txtPassword.TabIndex = 12;
@@ -85,6 +86,7 @@
             // btnBack
             // 
             btnBack.BackColor = Color.DodgerBlue;
+            btnBack.Cursor = Cursors.Hand;
             btnBack.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
             btnBack.Location = new Point(237, 553);
@@ -95,17 +97,19 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
-            // button1
+            // btnReEnter
             // 
-            button1.BackColor = Color.DodgerBlue;
-            button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(57, 553);
-            button1.Name = "button1";
-            button1.Size = new Size(174, 61);
-            button1.TabIndex = 10;
-            button1.Text = "NHẬP LẠI";
-            button1.UseVisualStyleBackColor = false;
+            btnReEnter.BackColor = Color.DodgerBlue;
+            btnReEnter.Cursor = Cursors.Hand;
+            btnReEnter.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReEnter.ForeColor = Color.White;
+            btnReEnter.Location = new Point(57, 553);
+            btnReEnter.Name = "btnReEnter";
+            btnReEnter.Size = new Size(174, 61);
+            btnReEnter.TabIndex = 10;
+            btnReEnter.Text = "NHẬP LẠI";
+            btnReEnter.UseVisualStyleBackColor = false;
+            btnReEnter.Click += btnReEnter_Click;
             // 
             // cbVerify
             // 
@@ -149,6 +153,7 @@
             // btnLogin
             // 
             btnLogin.BackColor = Color.DodgerBlue;
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(57, 486);
@@ -176,6 +181,7 @@
             Controls.Add(panel2);
             Controls.Add(pictureBox1);
             Name = "FLogin2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FLogin2";
             Load += FLogin2_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -200,7 +206,7 @@
         private TextBox txtUsername;
         private CheckBox cbVerify;
         private Button btnBack;
-        private Button button1;
+        private Button btnReEnter;
         private TextBox txtPassword;
     }
 }
