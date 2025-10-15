@@ -1,19 +1,21 @@
 ﻿using SacombankWinform.dto;
 using SacombankWinform.helper;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace SacombankWinform.services
 {
 
-    internal class SacombankService
+    public class SacombankService
     {
         private readonly CookieContainer _cookieJar = new CookieContainer();
         private HttpClient _httpClient;
@@ -43,7 +45,7 @@ namespace SacombankWinform.services
 
         public void updateHtml(string html)
         {
-         //   File.WriteAllText("debugLogin2.html", html);
+         //   File.WriteAllText("debugHomePage.html", html);
             _doc = new HtmlAgilityPack.HtmlDocument();
             _doc.LoadHtml(html);
         }
@@ -52,7 +54,7 @@ namespace SacombankWinform.services
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string html = await response.Content.ReadAsStringAsync();
-         //   File.WriteAllText("debug.html", html);
+         //   File.WriteAllText("debugLogin1.html", html);
             _doc = new HtmlAgilityPack.HtmlDocument();
             _doc.LoadHtml(html);
         }
@@ -129,14 +131,85 @@ namespace SacombankWinform.services
             var node = _doc.DocumentNode.SelectSingleNode("//input[@id='__JS_ENCRYPT_KEY__']");
             return node?.GetAttributeValue("value", "");
         }
-
-        public Dictionary<String, String> HandleEncryptPassword(string password)
-        {
-            var result = new Dictionary<string, string>();
-
         
-
-            return result;
+        public string? GetTextById(string id)
+        {
+            var nameHeader = _doc.DocumentNode.SelectSingleNode($"//span[@id='{id}']");
+            return nameHeader?.InnerText.Trim();
         }
+
+        public string getUrlBalanceFromHtml(string baseUrl)
+        {
+            var scriptNode = _doc.DocumentNode
+                                .SelectSingleNode("//div[@id='CorporateUserDashboardUX5_WAC85__1']//script");
+            if (scriptNode != null)
+            {
+                var scriptContent = scriptNode.InnerText;
+                var match = Regex.Match(scriptContent, @"baseUrl:\s*""([^""]+)""");
+                if (match.Success)
+                {
+                    string urlScript = match.Groups[1].Value;
+
+                    Uri baseUri = new Uri(baseUrl);
+                    Uri actionUri = new Uri(baseUri, urlScript);
+                    return actionUri.ToString();
+                }
+            }
+            return null;
+        }
+
+        public async Task<string> GetBalanceAsync(string url)
+        {
+            try
+            {
+                // Debug: In ra cookies hiện tại
+                var cookies = _cookieJar.GetCookies(new Uri("https://www.isacombank.com.vn"));
+                System.Diagnostics.Debug.WriteLine($"Current cookies count: {cookies.Count}");
+                foreach (Cookie cookie in cookies)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Cookie: {cookie.Name}={cookie.Value}");
+                }
+
+                // Thêm headers quan trọng cho AJAX request
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                
+                // Headers từ DevTools
+                request.Headers.Add("X-Requested-With", "XMLHttpRequest");
+                request.Headers.Add("Referer", "https://www.isacombank.com.vn/corp/AuthenticationController");
+                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                request.Headers.Add("Accept-Language", "en-US,en;q=0.5");
+                request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+                request.Headers.Add("Cache-Control", "no-cache");
+                request.Headers.Add("Pragma", "no-cache");
+
+                // Body FormData từ DevTools
+                var formData = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>(
+                        "criteria",
+                        "{\"WID_CONF\":\"CorporateUserDashboardUX5_WAC85__1\",\"PARENT_MENU_FOR_REMOVE\":\"DASHAT\",\"GROUPLETS_IN_PAGE\":\",CorporateUserDashboardUX5_WAC85__1\"}"
+                    ),
+                    new KeyValuePair<string, string>("target", "CorporateUserDashboardUX5_WAC85__1"),
+                    new KeyValuePair<string, string>("requestId", "0")
+                });
+
+                request.Content = formData;
+                
+                var response = await _httpClient.SendAsync(request);
+                
+                // In ra status và headers để debug
+                System.Diagnostics.Debug.WriteLine($"Response Status: {response.StatusCode}");
+                System.Diagnostics.Debug.WriteLine($"Response Headers: {response.Headers}");
+                
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetBalanceAsync: {ex.Message}");
+                throw;
+            }
+        }
+    
     }
 }

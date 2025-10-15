@@ -32,13 +32,13 @@ namespace SacombankWinform.helper
             if (chunkSize <= 0) chunkSize = Math.Max(nBytes - 2, 1);
 
             // salt random như JS (16 chữ số sau dấu .)
-            //string saltPass = MakeJsLikeRandom();
-            //string saltDummy1 = MakeJsLikeRandom();
-            //string saltDummy2 = MakeJsLikeRandom();
+            string saltPass = MakeJsLikeRandom();
+            string saltDummy1 = MakeJsLikeRandom();
+            string saltDummy2 = MakeJsLikeRandom();
 
-            string saltPass = "0.1236578943245645";
-            string saltDummy1 = "0.7456890341234586";
-            string saltDummy2 = "0.5678934521345678";
+            //string saltPass = "0.1236578943245645";
+            //string saltDummy1 = "0.7456890341234586";
+            //string saltDummy2 = "0.5678934521345678";
 
             string plainPass = $"password={password}_SALT_COMPONENT_={saltPass}";
             string plainDummy1 = $"password=dummy_SALT_COMPONENT_={saltDummy1}";
@@ -118,25 +118,25 @@ namespace SacombankWinform.helper
             return res;
         }
 
-        //private static string MakeJsLikeRandom()
-        //{
-        //    double r = new Random().NextDouble();
-        //    string s = r.ToString("0.################", System.Globalization.CultureInfo.InvariantCulture);
-        //    int dotIndex = s.IndexOf('.');
-        //    if (dotIndex >= 0)
-        //    {
-        //        int decimals = s.Length - dotIndex - 1;
-        //        if (decimals < 16)
-        //            s = s + new string('0', 16 - decimals);
-        //        else if (decimals > 16)
-        //            s = s.Substring(0, dotIndex + 1 + 16);
-        //    }
-        //    else
-        //    {
-        //        s = "0." + new string('0', 16);
-        //    }
-        //    return s;
-        //}
+        private static string MakeJsLikeRandom()
+        {
+            double r = new Random().NextDouble();
+            string s = r.ToString("0.################", System.Globalization.CultureInfo.InvariantCulture);
+            int dotIndex = s.IndexOf('.');
+            if (dotIndex >= 0)
+            {
+                int decimals = s.Length - dotIndex - 1;
+                if (decimals < 16)
+                    s = s + new string('0', 16 - decimals);
+                else if (decimals > 16)
+                    s = s.Substring(0, dotIndex + 1 + 16);
+            }
+            else
+            {
+                s = "0." + new string('0', 16);
+            }
+            return s;
+        }
 
     }
 }

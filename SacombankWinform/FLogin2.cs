@@ -22,10 +22,11 @@ namespace SacombankWinform
     {
         SacombankService _sacombankService;
         private string html;
-        public FLogin2(string username, string html)
+        public FLogin2(SacombankService sacombankService, string username, string html)
         {
             InitializeComponent();
-            _sacombankService = new SacombankService();
+            _sacombankService = sacombankService;
+           
             txtUsername.Text = username;
             this.html = html;
 
@@ -91,7 +92,15 @@ namespace SacombankWinform
             }
             else
             {
-                FHome fHome = new FHome();
+                _sacombankService.updateHtml(response);
+
+                // Load số dư
+                //string urlFinacleRiaRequest = _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
+                //MessageBox.Show(urlFinacleRiaRequest);
+                //string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
+
+                //MessageBox.Show(data);
+                FHome fHome = new FHome(_sacombankService, response);
                 this.Hide();
                 fHome.ShowDialog();
                 this.Close();
@@ -103,11 +112,11 @@ namespace SacombankWinform
         }
 
         // Gọi khi form đóng để dispose client
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            _sacombankService?.Dispose();
-            base.OnFormClosed(e);
-        }
+        //protected override void OnFormClosed(FormClosedEventArgs e)
+        //{
+        //    _sacombankService?.Dispose();
+        //    base.OnFormClosed(e);
+        //}
 
         private void btnReEnter_Click(object sender, EventArgs e)
         {

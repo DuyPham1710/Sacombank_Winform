@@ -70,7 +70,7 @@ namespace SacombankWinform
             }
             else
             {
-                FLogin2 fLogin2 = new FLogin2(dto.AuthenticationFG_USER_PRINCIPAL, response);
+                FLogin2 fLogin2 = new FLogin2(_sacombankService, dto.AuthenticationFG_USER_PRINCIPAL, response);
                 this.Hide();
                 fLogin2.ShowDialog();
                 this.Show();
