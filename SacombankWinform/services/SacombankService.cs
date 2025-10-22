@@ -292,10 +292,16 @@ namespace SacombankWinform.services
                 // Nếu không còn node nào → dừng
                 if (soDuNode == null && tenGoiNhoNode == null && loaiTaiKhoanNode == null)
                     break;
-
+                
+                decimal soDu = 0;
+                if (decimal.TryParse(soDuNode?.InnerText?.Trim(), out var parsedValue))
+                {
+                    soDu = parsedValue;
+                }
+                
                 var account = new AccountInfo
                 {
-                    SoDuKhaDung = soDuNode?.InnerText?.Trim() ?? "",
+                    SoDuKhaDung = soDu,
                     TenGoiNho = tenGoiNhoNode?.InnerText?.Trim() ?? "",
                     LoaiTaiKhoan = loaiTaiKhoanNode?.InnerText?.Trim() ?? ""
                 };

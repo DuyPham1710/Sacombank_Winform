@@ -18,75 +18,83 @@ namespace SacombankWinform
     {
         SacombankService _sacombankService;
         private string html;
+        private Form activeChildForm = null;
+        List<AccountInfo> accounts;
         public FHome(SacombankService sacombankService, string html)
         {
             InitializeComponent();
             _sacombankService = sacombankService;
             this.html = html;
+            accounts = new List<AccountInfo>();
         }
         private async void FHome_Load(object sender, EventArgs e)
         {
-            SetupDataGridView();
             _sacombankService.updateHtml(html);
-            
-            // Load số dư
-            string urlFinacleRiaRequest =  _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
-            //MessageBox.Show($"Balance URL: {urlFinacleRiaRequest}");
-            
-            // Debug headers trước khi gửi request
-         //   _sacombankService.PrintRequestHeaders(urlFinacleRiaRequest);
-            
+
+            string urlFinacleRiaRequest = _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
+
             try
             {
                 string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
-                
                 if (!string.IsNullOrEmpty(data))
                 {
-                  //  System.IO.File.WriteAllText("balance_response_debug.html", data);
-
-                    var accounts = _sacombankService.ExtractAccountInfo(data);
-                    dataGridViewBalance.Rows.Clear();
-                    foreach (var acct in accounts)
-                    {
-                        dataGridViewBalance.Rows.Add(acct.TenGoiNho, acct.LoaiTaiKhoan, acct.SoDuKhaDung);
-                    }
+                    accounts = _sacombankService.ExtractAccountInfo(data);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error getting balance: {ex.Message}");
+                // ignore and show empty dashboard
+                System.Diagnostics.Debug.WriteLine($"GetBalance error: {ex.Message}");
             }
+
+            var dashboard = new DashboardForm(accounts);
+            OpenChildForm(dashboard);
 
             lblUserName.Text = loadFullName();
         }
 
-        private void SetupDataGridView()
+        private void OpenChildForm(Form childForm)
         {
-            // Xóa cột cũ nếu có
-            dataGridViewBalance.Columns.Clear();
-
-            // Thêm cột
-            dataGridViewBalance.Columns.Add("TenGoiNho", "Tên gợi nhớ");
-            dataGridViewBalance.Columns.Add("LoaiTaiKhoan", "Loại tài khoản");
-            dataGridViewBalance.Columns.Add("SoDuKhaDung", "Số dư khả dụng");
-
-            // Auto size mode fill để chiếm hết chiều rộng
-            foreach (DataGridViewColumn col in dataGridViewBalance.Columns)
+            if (activeChildForm != null)
             {
-                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                activeChildForm.Close();
             }
-
-            // Nếu muốn các cột đều nhau
-            int columnCount = dataGridViewBalance.Columns.Count;
-            foreach (DataGridViewColumn col in dataGridViewBalance.Columns)
-            {
-                col.FillWeight = 100 / columnCount; // ví dụ 3 cột thì mỗi cột chiếm 33%
-            }
-
-            // Không cho user tự thêm row
-            dataGridViewBalance.AllowUserToAddRows = false;
-            dataGridViewBalance.RowHeadersVisible = false;
+            activeChildForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildHost.Controls.Clear();
+            panelChildHost.Controls.Add(childForm);
+            childForm.Show();
         }
+
+        //private void SetupDataGridView()
+        //{
+        //    // Xóa cột cũ nếu có
+        //    dataGridViewBalance.Columns.Clear();
+
+        //    // Thêm cột
+        //    dataGridViewBalance.Columns.Add("TenGoiNho", "Tên gợi nhớ");
+        //    dataGridViewBalance.Columns.Add("LoaiTaiKhoan", "Loại tài khoản");
+        //    dataGridViewBalance.Columns.Add("SoDuKhaDung", "Số dư khả dụng");
+
+        //    // Auto size mode fill để chiếm hết chiều rộng
+        //    foreach (DataGridViewColumn col in dataGridViewBalance.Columns)
+        //    {
+        //        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //    }
+
+        //    // Nếu muốn các cột đều nhau
+        //    int columnCount = dataGridViewBalance.Columns.Count;
+        //    foreach (DataGridViewColumn col in dataGridViewBalance.Columns)
+        //    {
+        //        col.FillWeight = 100 / columnCount; // ví dụ 3 cột thì mỗi cột chiếm 33%
+        //    }
+
+        //    // Không cho user tự thêm row
+        //    dataGridViewBalance.AllowUserToAddRows = false;
+        //    dataGridViewBalance.RowHeadersVisible = false;
+        //}
 
         private string loadFullName()
         {
@@ -105,6 +113,24 @@ namespace SacombankWinform
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void transferWithinSacombankToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var transferForm = new TransferWithinForm();
+            OpenChildForm(transferForm);
+        }
+
+        private void transferToOtherBankToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var transferForm = new TransferToOtherBankForm(accounts);
+            OpenChildForm(transferForm);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var dashboard = new DashboardForm(accounts);
+            OpenChildForm(dashboard);
         }
         //// Gọi khi form đóng để dispose client
         //protected override void OnFormClosed(FormClosedEventArgs e)

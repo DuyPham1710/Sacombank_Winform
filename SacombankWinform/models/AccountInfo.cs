@@ -10,6 +10,6 @@ namespace SacombankWinform.models
     {
         public string TenGoiNho { get; set; }
         public string LoaiTaiKhoan { get; set; }
-        public string SoDuKhaDung { get; set; }
+        public Decimal SoDuKhaDung { get; set; }
     }
 }

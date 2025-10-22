@@ -31,37 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FHome));
             label1 = new Label();
             panel1 = new Panel();
-            panel3 = new Panel();
-            panel5 = new Panel();
-            panel4 = new Panel();
-            dataGridViewBalance = new DataGridView();
-            panel10 = new Panel();
-            label7 = new Label();
-            panel8 = new Panel();
-            label5 = new Label();
-            panel9 = new Panel();
-            label6 = new Label();
-            panel7 = new Panel();
-            label4 = new Label();
-            panel6 = new Panel();
-            label3 = new Label();
-            label2 = new Label();
+            panelChildHost = new Panel();
             panel2 = new Panel();
             btnLogout = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             lblUserName = new Label();
             pictureBox1 = new PictureBox();
+            menuStrip1 = new MenuStrip();
+            tÀIKHOẢNToolStripMenuItem = new ToolStripMenuItem();
+            tÀIKHOẢNVÀTHẺToolStripMenuItem = new ToolStripMenuItem();
+            tIỀNGỬITRỰCTUYẾNToolStripMenuItem = new ToolStripMenuItem();
+            gIAODỊCHToolStripMenuItem = new ToolStripMenuItem();
+            cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem = new ToolStripMenuItem();
+            transferWithinSacombankToolStripMenuItem = new ToolStripMenuItem();
+            transferToOtherBankToolStripMenuItem = new ToolStripMenuItem();
+            tHANHTOÁNToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBalance).BeginInit();
-            panel10.SuspendLayout();
-            panel8.SuspendLayout();
-            panel9.SuspendLayout();
-            panel7.SuspendLayout();
-            panel6.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -77,7 +65,7 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panelChildHost);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -85,163 +73,15 @@
             panel1.Size = new Size(1886, 1004);
             panel1.TabIndex = 1;
             // 
-            // panel3
+            // panelChildHost
             // 
-            panel3.AutoScroll = true;
-            panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
-            panel3.Controls.Add(panel5);
-            panel3.Controls.Add(panel4);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 94);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1886, 910);
-            panel3.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.White;
-            panel5.Location = new Point(156, 280);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1177, 1);
-            panel5.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.RoyalBlue;
-            panel4.Controls.Add(dataGridViewBalance);
-            panel4.Controls.Add(panel10);
-            panel4.Controls.Add(panel8);
-            panel4.Controls.Add(panel9);
-            panel4.Controls.Add(panel7);
-            panel4.Controls.Add(panel6);
-            panel4.Controls.Add(label2);
-            panel4.Location = new Point(156, 217);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(1178, 616);
-            panel4.TabIndex = 0;
-            // 
-            // dataGridViewBalance
-            // 
-            dataGridViewBalance.BackgroundColor = Color.White;
-            dataGridViewBalance.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewBalance.Cursor = Cursors.Hand;
-            dataGridViewBalance.Dock = DockStyle.Bottom;
-            dataGridViewBalance.Location = new Point(0, 127);
-            dataGridViewBalance.Name = "dataGridViewBalance";
-            dataGridViewBalance.RowHeadersWidth = 51;
-            dataGridViewBalance.Size = new Size(1178, 489);
-            dataGridViewBalance.TabIndex = 6;
-            // 
-            // panel10
-            // 
-            panel10.BackColor = Color.DodgerBlue;
-            panel10.Controls.Add(label7);
-            panel10.Location = new Point(915, 88);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(207, 39);
-            panel10.TabIndex = 5;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(21, 10);
-            label7.Name = "label7";
-            label7.Size = new Size(168, 17);
-            label7.TabIndex = 0;
-            label7.Text = "TIỀN GỬI KHÔNG KỲ HẠN";
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.DodgerBlue;
-            panel8.Controls.Add(label5);
-            panel8.Location = new Point(706, 88);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(207, 39);
-            panel8.TabIndex = 4;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(21, 10);
-            label5.Name = "label5";
-            label5.Size = new Size(168, 17);
-            label5.TabIndex = 0;
-            label5.Text = "TIỀN GỬI KHÔNG KỲ HẠN";
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.DodgerBlue;
-            panel9.Controls.Add(label6);
-            panel9.Location = new Point(497, 88);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(207, 39);
-            panel9.TabIndex = 3;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(21, 10);
-            label6.Name = "label6";
-            label6.Size = new Size(168, 17);
-            label6.TabIndex = 0;
-            label6.Text = "TIỀN GỬI KHÔNG KỲ HẠN";
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.DodgerBlue;
-            panel7.Controls.Add(label4);
-            panel7.Location = new Point(289, 88);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(207, 39);
-            panel7.TabIndex = 2;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(21, 10);
-            label4.Name = "label4";
-            label4.Size = new Size(168, 17);
-            label4.TabIndex = 0;
-            label4.Text = "TIỀN GỬI KHÔNG KỲ HẠN";
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.WhiteSmoke;
-            panel6.Controls.Add(label3);
-            panel6.Location = new Point(80, 88);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(207, 39);
-            panel6.TabIndex = 1;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.DodgerBlue;
-            label3.Location = new Point(21, 10);
-            label3.Name = "label3";
-            label3.Size = new Size(168, 17);
-            label3.TabIndex = 0;
-            label3.Text = "TIỀN GỬI KHÔNG KỲ HẠN";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(33, 26);
-            label2.Name = "label2";
-            label2.Size = new Size(293, 28);
-            label2.TabIndex = 0;
-            label2.Text = "TÓM TẮT TÀI KHOẢN VÀ THẺ";
+            panelChildHost.AutoScroll = true;
+            panelChildHost.BackgroundImage = (Image)resources.GetObject("panelChildHost.BackgroundImage");
+            panelChildHost.Dock = DockStyle.Fill;
+            panelChildHost.Location = new Point(0, 94);
+            panelChildHost.Name = "panelChildHost";
+            panelChildHost.Size = new Size(1886, 910);
+            panelChildHost.TabIndex = 1;
             // 
             // panel2
             // 
@@ -249,6 +89,7 @@
             panel2.Controls.Add(iconButton1);
             panel2.Controls.Add(lblUserName);
             panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(menuStrip1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -300,6 +141,71 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Dock = DockStyle.None;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tÀIKHOẢNToolStripMenuItem, gIAODỊCHToolStripMenuItem });
+            menuStrip1.Location = new Point(362, 66);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(205, 28);
+            menuStrip1.TabIndex = 4;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // tÀIKHOẢNToolStripMenuItem
+            // 
+            tÀIKHOẢNToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tÀIKHOẢNVÀTHẺToolStripMenuItem, tIỀNGỬITRỰCTUYẾNToolStripMenuItem });
+            tÀIKHOẢNToolStripMenuItem.Name = "tÀIKHOẢNToolStripMenuItem";
+            tÀIKHOẢNToolStripMenuItem.Size = new Size(100, 24);
+            tÀIKHOẢNToolStripMenuItem.Text = "TÀI KHOẢN";
+            // 
+            // tÀIKHOẢNVÀTHẺToolStripMenuItem
+            // 
+            tÀIKHOẢNVÀTHẺToolStripMenuItem.Name = "tÀIKHOẢNVÀTHẺToolStripMenuItem";
+            tÀIKHOẢNVÀTHẺToolStripMenuItem.Size = new Size(242, 26);
+            tÀIKHOẢNVÀTHẺToolStripMenuItem.Text = "TÀI KHOẢN VÀ THẺ";
+            // 
+            // tIỀNGỬITRỰCTUYẾNToolStripMenuItem
+            // 
+            tIỀNGỬITRỰCTUYẾNToolStripMenuItem.Name = "tIỀNGỬITRỰCTUYẾNToolStripMenuItem";
+            tIỀNGỬITRỰCTUYẾNToolStripMenuItem.Size = new Size(242, 26);
+            tIỀNGỬITRỰCTUYẾNToolStripMenuItem.Text = "TIỀN GỬI TRỰC TUYẾN";
+            // 
+            // gIAODỊCHToolStripMenuItem
+            // 
+            gIAODỊCHToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem, tHANHTOÁNToolStripMenuItem });
+            gIAODỊCHToolStripMenuItem.Name = "gIAODỊCHToolStripMenuItem";
+            gIAODỊCHToolStripMenuItem.Size = new Size(97, 24);
+            gIAODỊCHToolStripMenuItem.Text = "GIAO DỊCH";
+            // 
+            // cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem
+            // 
+            cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { transferWithinSacombankToolStripMenuItem, transferToOtherBankToolStripMenuItem });
+            cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem.Name = "cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem";
+            cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem.Size = new Size(283, 26);
+            cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem.Text = "CHUYỂN TIỀN TRONG NƯỚC";
+            // 
+            // transferWithinSacombankToolStripMenuItem
+            // 
+            transferWithinSacombankToolStripMenuItem.Name = "transferWithinSacombankToolStripMenuItem";
+            transferWithinSacombankToolStripMenuItem.Size = new Size(306, 26);
+            transferWithinSacombankToolStripMenuItem.Text = "Chuyển tiền trong sacombank";
+            transferWithinSacombankToolStripMenuItem.Click += transferWithinSacombankToolStripMenuItem_Click;
+            // 
+            // transferToOtherBankToolStripMenuItem
+            // 
+            transferToOtherBankToolStripMenuItem.Name = "transferToOtherBankToolStripMenuItem";
+            transferToOtherBankToolStripMenuItem.Size = new Size(306, 26);
+            transferToOtherBankToolStripMenuItem.Text = "Chuyển tiền đến ngân hàng khác";
+            transferToOtherBankToolStripMenuItem.Click += transferToOtherBankToolStripMenuItem_Click;
+            // 
+            // tHANHTOÁNToolStripMenuItem
+            // 
+            tHANHTOÁNToolStripMenuItem.Name = "tHANHTOÁNToolStripMenuItem";
+            tHANHTOÁNToolStripMenuItem.Size = new Size(283, 26);
+            tHANHTOÁNToolStripMenuItem.Text = "THANH TOÁN ";
             // 
             // FHome
             // 
@@ -309,29 +215,18 @@
             Controls.Add(panel1);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            MainMenuStrip = menuStrip1;
             Name = "FHome";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FHome";
             WindowState = FormWindowState.Maximized;
             Load += FHome_Load;
             panel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBalance).EndInit();
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
-            panel9.ResumeLayout(false);
-            panel9.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -340,25 +235,20 @@
 
         private Label label1;
         private Panel panel1;
-        private Panel panel3;
+        private Panel panelChildHost;
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label lblUserName;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private Panel panel4;
-        private Panel panel5;
-        private Label label2;
-        private Panel panel10;
-        private Label label7;
-        private Panel panel8;
-        private Label label5;
-        private Panel panel9;
-        private Label label6;
-        private Panel panel7;
-        private Label label4;
-        private Panel panel6;
-        private Label label3;
         private FontAwesome.Sharp.IconButton btnLogout;
-        private DataGridView dataGridViewBalance;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem tÀIKHOẢNToolStripMenuItem;
+        private ToolStripMenuItem tÀIKHOẢNVÀTHẺToolStripMenuItem;
+        private ToolStripMenuItem tIỀNGỬITRỰCTUYẾNToolStripMenuItem;
+        private ToolStripMenuItem gIAODỊCHToolStripMenuItem;
+        private ToolStripMenuItem cHUYỂNTIỀNTRONGNƯỚCToolStripMenuItem;
+        private ToolStripMenuItem transferWithinSacombankToolStripMenuItem;
+        private ToolStripMenuItem transferToOtherBankToolStripMenuItem;
+        private ToolStripMenuItem tHANHTOÁNToolStripMenuItem;
     }
 }

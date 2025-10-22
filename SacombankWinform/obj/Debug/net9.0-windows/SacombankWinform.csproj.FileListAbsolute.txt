@@ -64,3 +64,6 @@ D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\refint\Saco
 D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\SacombankWinform.pdb
 D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\SacombankWinform.genruntimeconfig.cache
 D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\ref\SacombankWinform.dll
+D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\SacombankWinform.DashboardForm.resources
+D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\SacombankWinform.TransferToOtherBankForm.resources
+D:\Intern\SacombankWinform\SacombankWinform\obj\Debug\net9.0-windows\SacombankWinform.TransferWithinForm.resources
