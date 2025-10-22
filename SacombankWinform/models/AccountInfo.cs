@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SacombankWinform.models
 {
-    internal class AccountInfo
+    public class AccountInfo
     {
         public string TenGoiNho { get; set; }
         public string LoaiTaiKhoan { get; set; }
-        public decimal SoDuKhaDung { get; set; }
+        public string SoDuKhaDung { get; set; }
     }
 }

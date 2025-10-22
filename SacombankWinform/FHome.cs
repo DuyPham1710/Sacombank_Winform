@@ -1,4 +1,5 @@
 ﻿using SacombankWinform.Constants;
+using SacombankWinform.models;
 using SacombankWinform.services;
 using System;
 using System.Buffers.Text;
@@ -30,14 +31,33 @@ namespace SacombankWinform
             
             // Load số dư
             string urlFinacleRiaRequest =  _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
-            MessageBox.Show(urlFinacleRiaRequest);
-            string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
+            //MessageBox.Show($"Balance URL: {urlFinacleRiaRequest}");
+            
+            // Debug headers trước khi gửi request
+         //   _sacombankService.PrintRequestHeaders(urlFinacleRiaRequest);
+            
+            try
+            {
+                string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
+                
+                if (!string.IsNullOrEmpty(data))
+                {
+                  //  System.IO.File.WriteAllText("balance_response_debug.html", data);
 
-            MessageBox.Show(data);
+                    var accounts = _sacombankService.ExtractAccountInfo(data);
+                    dataGridViewBalance.Rows.Clear();
+                    foreach (var acct in accounts)
+                    {
+                        dataGridViewBalance.Rows.Add(acct.TenGoiNho, acct.LoaiTaiKhoan, acct.SoDuKhaDung);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error getting balance: {ex.Message}");
+            }
 
             lblUserName.Text = loadFullName();
-
-
         }
 
         private void SetupDataGridView()

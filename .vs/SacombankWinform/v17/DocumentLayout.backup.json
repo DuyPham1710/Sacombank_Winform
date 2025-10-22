@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\Intern\\SacombankWinform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\services\\sacombankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\services\\sacombankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\flogin1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|D:\\Intern\\SacombankWinform\\sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\fhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|D:\\Intern\\SacombankWinform\\sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\services\\sacombankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\services\\sacombankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\flogin1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\models\\accountinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\models\\accountinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\helper\\sacombankapihelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\helper\\sacombankapihelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|D:\\Intern\\SacombankWinform\\sacombankwinform\\flogin1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -35,12 +35,16 @@
       "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\helper\\jcryptionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\models\\accountinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\models\\accountinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\helper\\formhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\helper\\formhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|D:\\Intern\\SacombankWinform\\sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|solutionrelative:sacombankwinform\\flogin2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8023132E-D9C0-408F-90A0-B0B0C6D8746D}|SacombankWinform\\SacombankWinform.csproj|d:\\intern\\sacombankwinform\\sacombankwinform\\dto\\login2requestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,25 +86,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
+              "Title": "SacombankApiHelper.cs",
+              "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\helper\\SacombankApiHelper.cs",
+              "RelativeDocumentMoniker": "SacombankWinform\\helper\\SacombankApiHelper.cs",
+              "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\helper\\SacombankApiHelper.cs",
+              "RelativeToolTip": "SacombankWinform\\helper\\SacombankApiHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T03:43:29.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AccountInfo.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\models\\AccountInfo.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\models\\AccountInfo.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\models\\AccountInfo.cs",
               "RelativeToolTip": "SacombankWinform\\models\\AccountInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T01:41:17.782Z"
+              "WhenOpened": "2025-10-04T01:41:17.782Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FHome.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FHome.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FHome.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FHome.cs",
               "RelativeToolTip": "SacombankWinform\\FHome.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAIAwwCcAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAApwC8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T10:34:13.646Z",
               "EditorCaption": ""
@@ -113,13 +131,13 @@
               "RelativeDocumentMoniker": "SacombankWinform\\helper\\JCryptionHelper.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\helper\\JCryptionHelper.cs",
               "RelativeToolTip": "SacombankWinform\\helper\\JCryptionHelper.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwB8AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAzwB8AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T03:49:19.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "FLogin2.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin2.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FLogin2.cs",
@@ -132,13 +150,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SacombankService.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\services\\SacombankService.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\services\\SacombankService.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\services\\SacombankService.cs",
               "RelativeToolTip": "SacombankWinform\\services\\SacombankService.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAmwCQAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAAwBYBAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-25T10:15:49.887Z",
               "EditorCaption": ""
@@ -152,23 +170,25 @@
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin1.cs [Design]",
               "RelativeToolTip": "SacombankWinform\\FLogin1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T03:19:06.843Z"
+              "WhenOpened": "2025-09-25T03:19:06.843Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "FLogin1.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin1.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FLogin1.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin1.cs",
               "RelativeToolTip": "SacombankWinform\\FLogin1.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAkwEgAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAYwIAAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T17:37:54.099Z"
+              "WhenOpened": "2025-09-25T17:37:54.099Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Login2RequestDto.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\dto\\Login2RequestDto.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\dto\\Login2RequestDto.cs",
@@ -180,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "FormHelper.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\helper\\FormHelper.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\helper\\FormHelper.cs",
@@ -192,19 +212,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "FLogin2.cs [Design]",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin2.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FLogin2.cs",
               "ToolTip": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin2.cs [Design]",
               "RelativeToolTip": "SacombankWinform\\FLogin2.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T04:00:17.495Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-09-25T04:00:17.495Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FLogin2.Designer.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin2.Designer.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FLogin2.Designer.cs",
@@ -212,12 +231,11 @@
               "RelativeToolTip": "SacombankWinform\\FLogin2.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T08:55:11.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T08:55:11.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FHome.cs [Design]",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FHome.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FHome.cs",
@@ -229,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Login1RequestDto.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\dto\\Login1RequestDto.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\dto\\Login1RequestDto.cs",
@@ -241,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "FLogin1.Designer.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\FLogin1.Designer.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\FLogin1.Designer.cs",
@@ -253,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "GlConstants.cs",
               "DocumentMoniker": "D:\\Intern\\SacombankWinform\\SacombankWinform\\Constants\\GlConstants.cs",
               "RelativeDocumentMoniker": "SacombankWinform\\Constants\\GlConstants.cs",

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SacombankWinform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6adb4ea03a6d636fa383c043af78f9ef2b1ffdb1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c171883d3acc0fb013660c55f274a1f5ff2eb01")]
 [assembly: System.Reflection.AssemblyProductAttribute("SacombankWinform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SacombankWinform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

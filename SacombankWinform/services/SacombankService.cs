@@ -1,4 +1,5 @@
-﻿using SacombankWinform.dto;
+﻿using SacombankWinform.Constants;
+using SacombankWinform.dto;
 using SacombankWinform.helper;
 using System;
 using System.Buffers.Text;
@@ -9,8 +10,10 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using SacombankWinform.models;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using HtmlAgilityPack;
 
 namespace SacombankWinform.services
 {
@@ -20,7 +23,8 @@ namespace SacombankWinform.services
         private readonly CookieContainer _cookieJar = new CookieContainer();
         private HttpClient _httpClient;
         private HtmlAgilityPack.HtmlDocument _doc;
-      
+        private string _xNum;
+
         public SacombankService()
         {
             InitHttpClient();
@@ -49,6 +53,38 @@ namespace SacombankWinform.services
             _doc = new HtmlAgilityPack.HtmlDocument();
             _doc.LoadHtml(html);
         }
+
+        public void AddCookie(string name, string value, string domain, string path = "/", bool secure = false, bool httpOnly = false, DateTime? expires = null)
+        {
+            try
+            {
+                // Domain may include leading dot; CookieContainer.Add requires a Uri
+                var host = domain?.TrimStart('.') ?? "www.isacombank.com.vn";
+                var uri = new Uri($"https://{host}");
+                var cookie = new Cookie(name, value, path, domain)
+                {
+                    Secure = secure,
+                    HttpOnly = httpOnly
+                };
+                if (expires.HasValue)
+                {
+                    cookie.Expires = expires.Value;
+                }
+                _cookieJar.Add(uri, cookie);
+                System.Diagnostics.Debug.WriteLine($"Imported cookie: {name}={value}; domain={domain}; path={path}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error adding cookie: {ex.Message}");
+            }
+        }
+
+        public void SetXNum(string xNum)
+        {
+            _xNum = xNum;
+            System.Diagnostics.Debug.WriteLine($"xNum set: {_xNum}");
+        }
+
         public async Task LoadLoginPageAsync(string url)
         {       
             var response = await _httpClient.GetAsync(url);
@@ -121,6 +157,23 @@ namespace SacombankWinform.services
             return await response.Content.ReadAsStringAsync();
         }
 
+        //public void PrintRequestHeaders(string url)
+        //{
+        //    System.Diagnostics.Debug.WriteLine("=== Current HttpClient Headers ===");
+        //    System.Diagnostics.Debug.WriteLine($"UserAgent: {_httpClient.DefaultRequestHeaders.UserAgent}");
+        //    System.Diagnostics.Debug.WriteLine($"Accept: {_httpClient.DefaultRequestHeaders.Accept}");
+
+        //    System.Diagnostics.Debug.WriteLine("\n=== Cookies for sacombank ===");
+        //    var cookies = _cookieJar.GetCookies(new Uri("https://www.isacombank.com.vn"));
+        //    foreach (Cookie cookie in cookies)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"{cookie.Name}: {cookie.Value}");
+        //    }
+            
+        //    System.Diagnostics.Debug.WriteLine($"\n=== Target URL ===");
+        //    System.Diagnostics.Debug.WriteLine(url);
+        //}
+
         public void Dispose()
         {
             _httpClient?.Dispose();
@@ -162,25 +215,36 @@ namespace SacombankWinform.services
         {
             try
             {
-                // Debug: In ra cookies hiện tại
-                var cookies = _cookieJar.GetCookies(new Uri("https://www.isacombank.com.vn"));
-                System.Diagnostics.Debug.WriteLine($"Current cookies count: {cookies.Count}");
-                foreach (Cookie cookie in cookies)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Cookie: {cookie.Name}={cookie.Value}");
-                }
-
-                // Thêm headers quan trọng cho AJAX request
-                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                string finParam = SacombankApiHelper.CreateFinParam(url, 0, _xNum);
                 
-                // Headers từ DevTools
-                request.Headers.Add("X-Requested-With", "XMLHttpRequest");
-                request.Headers.Add("Referer", "https://www.isacombank.com.vn/corp/AuthenticationController");
-                request.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-                request.Headers.Add("Accept-Language", "en-US,en;q=0.5");
-                request.Headers.Add("Accept-Encoding", "gzip, deflate, br");
-                request.Headers.Add("Cache-Control", "no-cache");
-                request.Headers.Add("Pragma", "no-cache");
+            //    MessageBox.Show(finParam);
+
+                // Thêm headers quan trọng cho AJAX request (cookies sent automatically from CookieContainer)
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+                // Standard headers
+                request.Headers.TryAddWithoutValidation("Accept", "*/*");
+                request.Headers.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate, br, zstd");
+                request.Headers.TryAddWithoutValidation("Accept-Language", "en-US,en;q=0.8");
+                request.Headers.TryAddWithoutValidation("Connection", "keep-alive");
+                request.Headers.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36");
+
+                // AJAX + app specific headers
+                request.Headers.TryAddWithoutValidation("X-Requested-With", "XMLHttpRequest");
+                request.Headers.TryAddWithoutValidation("Origin", "https://www.isacombank.com.vn");
+                // Referer should include the login URL with jsessionid/bwayparam when available
+                try
+                {
+                        var refUri = new Uri(GlConstants.ORIGINAL_BASE_URL);
+                        request.Headers.Referrer = refUri;
+                }
+                catch { }
+
+                request.Headers.TryAddWithoutValidation("IPTYPE", "XML");
+                request.Headers.TryAddWithoutValidation("requestId", "0");
+
+                // custom finParam header
+                request.Headers.TryAddWithoutValidation("finParam", finParam);
 
                 // Body FormData từ DevTools
                 var formData = new FormUrlEncodedContent(new[]
@@ -194,13 +258,9 @@ namespace SacombankWinform.services
                 });
 
                 request.Content = formData;
-                
+            
                 var response = await _httpClient.SendAsync(request);
-                
-                // In ra status và headers để debug
-                System.Diagnostics.Debug.WriteLine($"Response Status: {response.StatusCode}");
-                System.Diagnostics.Debug.WriteLine($"Response Headers: {response.Headers}");
-                
+     
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
@@ -210,6 +270,42 @@ namespace SacombankWinform.services
                 throw;
             }
         }
-    
+
+        public List<AccountInfo> ExtractAccountInfo(string html)
+        {
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            var accounts = new List<AccountInfo>();
+
+            // Lấy danh sách các index (0, 1, 2, ...) vì có thể có nhiều tài khoản
+            int index = 0;
+            while (true)
+            {
+                var soDuNode = doc.DocumentNode.SelectSingleNode(
+                    $"//span[@id='CorporateUserDashboardUX5_WAC85__1:HREF_OutputTextbox29902876[{index}]']");
+                var tenGoiNhoNode = doc.DocumentNode.SelectSingleNode(
+                    $"//a[@id='HREF_CorporateUserDashboardUX5_WAC85__1:AccountSummaryFG.OPR_ACCOUNT_NUMBER_ARRAY[{index}]']");
+                var loaiTaiKhoanNode = doc.DocumentNode.SelectSingleNode(
+                    $"//span[@id='CorporateUserDashboardUX5_WAC85__1:AccountSummaryFG.OPR_ACCOUNT_TYPE_ARRAY[{index}]']");
+
+                // Nếu không còn node nào → dừng
+                if (soDuNode == null && tenGoiNhoNode == null && loaiTaiKhoanNode == null)
+                    break;
+
+                var account = new AccountInfo
+                {
+                    SoDuKhaDung = soDuNode?.InnerText?.Trim() ?? "",
+                    TenGoiNho = tenGoiNhoNode?.InnerText?.Trim() ?? "",
+                    LoaiTaiKhoan = loaiTaiKhoanNode?.InnerText?.Trim() ?? ""
+                };
+
+                accounts.Add(account);
+                index++;
+            }
+
+            return accounts;
+        }
+
     }
 }
