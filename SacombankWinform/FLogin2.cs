@@ -92,15 +92,10 @@ namespace SacombankWinform
             }
             else
             {
+                File.WriteAllText("debugLogin2.html", response);
                 _sacombankService.updateHtml(response);
 
-                // Load số dư
-                //string urlFinacleRiaRequest = _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
-                //MessageBox.Show(urlFinacleRiaRequest);
-                //string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
-
-                //MessageBox.Show(data);
-                FHome fHome = new FHome(_sacombankService, response);
+                FHome fHome = new FHome(_sacombankService, actionUrl);
                 this.Hide();
                 fHome.ShowDialog();
                 this.Close();

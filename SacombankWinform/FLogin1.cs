@@ -102,7 +102,7 @@ namespace SacombankWinform
             {
                 System.Diagnostics.Debug.WriteLine($"WebView2 init error: {ex.Message}");
                 // fallback to HttpClient fetch
-                await _sacombankService.LoadLoginPageAsync(GlConstants.ORIGINAL_BASE_URL);
+                await _sacombankService.LoadPageAsync(GlConstants.ORIGINAL_BASE_URL);
             }
 
             var captchaImg = await _sacombankService.LoadCaptchaImageAsync(GlConstants.ORIGINAL_BASE_URL);

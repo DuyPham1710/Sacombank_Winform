@@ -19,13 +19,24 @@ namespace SacombankWinform
             panel1 = new Panel();
             panel2 = new Panel();
             panel4 = new Panel();
+            txtDienGiai = new TextBox();
+            txtMoney = new TextBox();
+            label17 = new Label();
+            label16 = new Label();
+            checkBox1 = new CheckBox();
+            txtSTK = new TextBox();
+            cbBank = new ComboBox();
+            label15 = new Label();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
             radioButton3 = new RadioButton();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             label11 = new Label();
             panel8 = new Panel();
             label10 = new Label();
-            button1 = new Button();
+            btnAccountInfo = new Button();
             lblBalance = new Label();
             panel7 = new Panel();
             cbTaiKhoan = new ComboBox();
@@ -44,6 +55,8 @@ namespace SacombankWinform
             label2 = new Label();
             panel3 = new Panel();
             label1 = new Label();
+            btnRefresh = new Button();
+            btnContinue = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -58,7 +71,7 @@ namespace SacombankWinform
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1122, 1055);
+            panel1.Size = new Size(1242, 1055);
             panel1.TabIndex = 2;
             // 
             // panel2
@@ -73,13 +86,26 @@ namespace SacombankWinform
             // panel4
             // 
             panel4.BackColor = Color.White;
+            panel4.Controls.Add(btnContinue);
+            panel4.Controls.Add(btnRefresh);
+            panel4.Controls.Add(txtDienGiai);
+            panel4.Controls.Add(txtMoney);
+            panel4.Controls.Add(label17);
+            panel4.Controls.Add(label16);
+            panel4.Controls.Add(checkBox1);
+            panel4.Controls.Add(txtSTK);
+            panel4.Controls.Add(cbBank);
+            panel4.Controls.Add(label15);
+            panel4.Controls.Add(label14);
+            panel4.Controls.Add(label13);
+            panel4.Controls.Add(label12);
             panel4.Controls.Add(radioButton3);
             panel4.Controls.Add(radioButton2);
             panel4.Controls.Add(radioButton1);
             panel4.Controls.Add(label11);
             panel4.Controls.Add(panel8);
             panel4.Controls.Add(label10);
-            panel4.Controls.Add(button1);
+            panel4.Controls.Add(btnAccountInfo);
             panel4.Controls.Add(lblBalance);
             panel4.Controls.Add(panel7);
             panel4.Controls.Add(cbTaiKhoan);
@@ -101,6 +127,101 @@ namespace SacombankWinform
             panel4.Name = "panel4";
             panel4.Size = new Size(982, 842);
             panel4.TabIndex = 1;
+            // 
+            // txtDienGiai
+            // 
+            txtDienGiai.Location = new Point(424, 802);
+            txtDienGiai.Name = "txtDienGiai";
+            txtDienGiai.Size = new Size(242, 27);
+            txtDienGiai.TabIndex = 34;
+            // 
+            // txtMoney
+            // 
+            txtMoney.Location = new Point(424, 727);
+            txtMoney.Name = "txtMoney";
+            txtMoney.Size = new Size(242, 27);
+            txtMoney.TabIndex = 33;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(258, 809);
+            label17.Name = "label17";
+            label17.Size = new Size(78, 20);
+            label17.TabIndex = 32;
+            label17.Text = "Diễn giải:*";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(258, 776);
+            label16.Name = "label16";
+            label16.Size = new Size(124, 20);
+            label16.TabIndex = 31;
+            label16.Text = "Số tiền bằng chữ:";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(449, 633);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(18, 17);
+            checkBox1.TabIndex = 30;
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // txtSTK
+            // 
+            txtSTK.Location = new Point(424, 561);
+            txtSTK.Name = "txtSTK";
+            txtSTK.Size = new Size(242, 27);
+            txtSTK.TabIndex = 29;
+            // 
+            // cbBank
+            // 
+            cbBank.ForeColor = SystemColors.HotTrack;
+            cbBank.FormattingEnabled = true;
+            cbBank.Items.AddRange(new object[] { "Chọn" });
+            cbBank.Location = new Point(424, 508);
+            cbBank.Name = "cbBank";
+            cbBank.Size = new Size(242, 28);
+            cbBank.TabIndex = 28;
+            cbBank.Text = "Chọn";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(279, 630);
+            label15.Name = "label15";
+            label15.Size = new Size(148, 20);
+            label15.TabIndex = 27;
+            label15.Text = "Lưu người thụ hưởng";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(279, 564);
+            label14.Name = "label14";
+            label14.Size = new Size(121, 20);
+            label14.TabIndex = 26;
+            label14.Text = "Số tài khoản/Thẻ";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(279, 516);
+            label13.Name = "label13";
+            label13.Size = new Size(88, 20);
+            label13.TabIndex = 25;
+            label13.Text = "Ngân hàng*";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(258, 734);
+            label12.Name = "label12";
+            label12.Size = new Size(64, 20);
+            label12.TabIndex = 24;
+            label12.Text = "Số tiền:*";
             // 
             // radioButton3
             // 
@@ -139,7 +260,7 @@ namespace SacombankWinform
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(29, 538);
+            label11.Location = new Point(29, 704);
             label11.Name = "label11";
             label11.Size = new Size(178, 23);
             label11.TabIndex = 20;
@@ -148,7 +269,7 @@ namespace SacombankWinform
             // panel8
             // 
             panel8.BackColor = Color.Black;
-            panel8.Location = new Point(2, 519);
+            panel8.Location = new Point(2, 679);
             panel8.Name = "panel8";
             panel8.Size = new Size(978, 1);
             panel8.TabIndex = 19;
@@ -163,17 +284,17 @@ namespace SacombankWinform
             label10.TabIndex = 18;
             label10.Text = "Thông tin người thụ hưởng";
             // 
-            // button1
+            // btnAccountInfo
             // 
-            button1.BackColor = Color.RoyalBlue;
-            button1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(737, 304);
-            button1.Name = "button1";
-            button1.Size = new Size(209, 48);
-            button1.TabIndex = 17;
-            button1.Text = "THÔNG TIN TÀI KHOẢN";
-            button1.UseVisualStyleBackColor = false;
+            btnAccountInfo.BackColor = Color.RoyalBlue;
+            btnAccountInfo.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAccountInfo.ForeColor = Color.White;
+            btnAccountInfo.Location = new Point(737, 304);
+            btnAccountInfo.Name = "btnAccountInfo";
+            btnAccountInfo.Size = new Size(209, 48);
+            btnAccountInfo.TabIndex = 17;
+            btnAccountInfo.Text = "THÔNG TIN TÀI KHOẢN";
+            btnAccountInfo.UseVisualStyleBackColor = false;
             // 
             // lblBalance
             // 
@@ -342,11 +463,35 @@ namespace SacombankWinform
             label1.TabIndex = 0;
             label1.Text = "Chuyển tiền đến Ngân hàng khác";
             // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.RoyalBlue;
+            btnRefresh.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = Color.White;
+            btnRefresh.Location = new Point(725, 776);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(104, 48);
+            btnRefresh.TabIndex = 35;
+            btnRefresh.Text = "NHẬP LẠI";
+            btnRefresh.UseVisualStyleBackColor = false;
+            // 
+            // btnContinue
+            // 
+            btnContinue.BackColor = Color.RoyalBlue;
+            btnContinue.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnContinue.ForeColor = Color.White;
+            btnContinue.Location = new Point(858, 776);
+            btnContinue.Name = "btnContinue";
+            btnContinue.Size = new Size(104, 48);
+            btnContinue.TabIndex = 36;
+            btnContinue.Text = "TIẾP TỤC";
+            btnContinue.UseVisualStyleBackColor = false;
+            // 
             // TransferToOtherBankForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1122, 1055);
+            ClientSize = new Size(1242, 1055);
             Controls.Add(panel1);
             Name = "TransferToOtherBankForm";
             Text = "Chuyển tiền đến ngân hàng khác";
@@ -382,9 +527,22 @@ namespace SacombankWinform
         private Label label11;
         private Panel panel8;
         private Label label10;
-        private Button button1;
+        private Button btnAccountInfo;
         private RadioButton radioButton3;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
+        private CheckBox checkBox1;
+        private TextBox txtSTK;
+        private ComboBox cbBank;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private TextBox txtDienGiai;
+        private TextBox txtMoney;
+        private Label label17;
+        private Label label16;
+        private Button btnContinue;
+        private Button btnRefresh;
     }
 }

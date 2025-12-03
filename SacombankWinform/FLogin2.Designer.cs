@@ -82,6 +82,7 @@
             txtPassword.PlaceholderText = "MẬT KHẨU";
             txtPassword.Size = new Size(353, 27);
             txtPassword.TabIndex = 12;
+            txtPassword.Text = "Linkq@2025";
             // 
             // btnBack
             // 
@@ -113,6 +114,8 @@
             // 
             // cbVerify
             // 
+            cbVerify.Checked = true;
+            cbVerify.CheckState = CheckState.Checked;
             cbVerify.Location = new Point(77, 276);
             cbVerify.Name = "cbVerify";
             cbVerify.Size = new Size(314, 55);

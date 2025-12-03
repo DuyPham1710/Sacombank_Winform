@@ -85,12 +85,13 @@ namespace SacombankWinform.services
             System.Diagnostics.Debug.WriteLine($"xNum set: {_xNum}");
         }
 
-        public async Task LoadLoginPageAsync(string url)
-        {       
+        public async Task LoadPageAsync(string url)
+        {
             var response = await _httpClient.GetAsync(url);
             response.EnsureSuccessStatusCode();
             string html = await response.Content.ReadAsStringAsync();
-         //   File.WriteAllText("debugLogin1.html", html);
+            MessageBox.Show(html);
+           // File.WriteAllText("debugLogin1.html", html);
             _doc = new HtmlAgilityPack.HtmlDocument();
             _doc.LoadHtml(html);
         }
@@ -128,7 +129,7 @@ namespace SacombankWinform.services
 
         public async Task<System.Drawing.Image?> RefreshCaptchaImageAsync(string baseUrl)
         {
-            await LoadLoginPageAsync(baseUrl);
+            await LoadPageAsync(baseUrl);
 
             return await LoadCaptchaImageAsync(baseUrl);
         }
@@ -191,10 +192,10 @@ namespace SacombankWinform.services
             return nameHeader?.InnerText.Trim();
         }
 
-        public string getUrlBalanceFromHtml(string baseUrl)
+        public string getBaseUrlFromScriptHtml(string baseUrl, string id)
         {
             var scriptNode = _doc.DocumentNode
-                                .SelectSingleNode("//div[@id='CorporateUserDashboardUX5_WAC85__1']//script");
+                                .SelectSingleNode($"//div[@id='{id}']//script");
             if (scriptNode != null)
             {
                 var scriptContent = scriptNode.InnerText;
@@ -211,13 +212,13 @@ namespace SacombankWinform.services
             return null;
         }
 
-        public async Task<string> GetBalanceAsync(string url)
+        public async Task<string> SendSacombankRequestAsync(string url)
         {
             try
             {
                 string finParam = SacombankApiHelper.CreateFinParam(url, 0, _xNum);
                 
-            //    MessageBox.Show(finParam);
+               // MessageBox.Show(finParam);
 
                 // Thêm headers quan trọng cho AJAX request (cookies sent automatically from CookieContainer)
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
@@ -227,7 +228,7 @@ namespace SacombankWinform.services
                 request.Headers.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate, br, zstd");
                 request.Headers.TryAddWithoutValidation("Accept-Language", "en-US,en;q=0.8");
                 request.Headers.TryAddWithoutValidation("Connection", "keep-alive");
-                request.Headers.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36");
+             //   request.Headers.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36");
 
                 // AJAX + app specific headers
                 request.Headers.TryAddWithoutValidation("X-Requested-With", "XMLHttpRequest");
@@ -258,7 +259,7 @@ namespace SacombankWinform.services
                 });
 
                 request.Content = formData;
-            
+              
                 var response = await _httpClient.SendAsync(request);
      
                 response.EnsureSuccessStatusCode();
@@ -313,5 +314,107 @@ namespace SacombankWinform.services
             return accounts;
         }
 
+        public string? getHrefTransferAsync(string baseUrl)
+        {
+            if (_doc == null) return null;
+
+            //var liNode = _doc.DocumentNode.SelectSingleNode("//li[@id='IL_Chuyn-tin-trong-nc_2']");
+            //if (liNode == null) return null;
+
+            //var aNode = liNode.SelectSingleNode(".//a[@href]");
+            //if (aNode == null) return null;
+
+            var aNode = _doc.DocumentNode.SelectSingleNode("//a[@id='Chuyn-tin-trong-nc_Chuyn-tin-n-Ngn-hng-khc']");
+            if (aNode == null) return null;
+
+            string href = aNode.GetAttributeValue("href", "").Trim();
+            if (string.IsNullOrEmpty(href)) return null;
+
+            // Nếu src là relative -> chuyển thành absolute
+            string transferUrl = href;
+            if (!Uri.IsWellFormedUriString(transferUrl, UriKind.Absolute))
+            {
+                var baseUri = new Uri(baseUrl);
+                transferUrl = new Uri(baseUri, href).ToString();
+            }
+
+            return transferUrl;
+        }
+
+        public async Task LoadTransferPageAsync(string url, string actionUrl)
+        {
+        //    var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+        //    // 🧩 Chuẩn các header như từ trình duyệt thật
+        //    request.Headers.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8\r\n");
+        //    request.Headers.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate, br, zstd");
+        //    request.Headers.TryAddWithoutValidation("Accept-Language", "en-US,en;q=0.8");
+        //    request.Headers.TryAddWithoutValidation("Connection", "keep-alive");
+        //    request.Headers.TryAddWithoutValidation("Host", "www.isacombank.com.vn");
+        //    request.Headers.TryAddWithoutValidation("Upgrade-Insecure-Requests", "1");
+        //    request.Headers.TryAddWithoutValidation("Sec-Fetch-Dest", "document");
+        //    request.Headers.TryAddWithoutValidation("Sec-Fetch-Mode", "navigate");
+        //    request.Headers.TryAddWithoutValidation("Sec-Fetch-Site", "same-origin");
+        //    request.Headers.TryAddWithoutValidation("Sec-Fetch-User", "?1");
+        //    request.Headers.TryAddWithoutValidation("Sec-Gpc", "1");
+        //    request.Headers.TryAddWithoutValidation("Sec-CH-UA", "\"Brave\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\"");
+        //    request.Headers.TryAddWithoutValidation("Sec-CH-UA-Mobile", "?0");
+        //    request.Headers.TryAddWithoutValidation("Sec-CH-UA-Platform", "\"Windows\"");
+        //    request.Headers.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36");
+        //    // 🧩 Referrer
+        //    try
+        //    {
+        //        var refUri = new Uri(actionUrl);
+        //        //request.Headers.Referrer = refUri;
+        //        request.Headers.TryAddWithoutValidation("referer", refUri.ToString());
+
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Referrer URL không hợp lệ");
+        //    }
+
+        //    // 🪶 Debug check headers
+        //    StringBuilder headerInfo = new StringBuilder();
+        //    foreach (var header in request.Headers)
+        //    {
+        //        headerInfo.AppendLine($"{header.Key}: {string.Join(", ", header.Value)}");
+        //    }
+        //    MessageBox.Show(headerInfo.ToString(), "Request Headers");
+
+            // 📨 Gửi request
+
+            var uri = new Uri("https://www.isacombank.com.vn");
+
+            // Xóa userType cũ
+            foreach (Cookie c in _cookieJar.GetCookies(uri))
+            {
+                if (c.Name == "userType")
+                {
+                    c.Expired = true;
+                }
+            }
+
+            // Thêm cookie mới
+            _cookieJar.Add(uri, new Cookie("userType", "2"));
+            _cookieJar.Add(uri, new Cookie("tree1Selected", ""));
+            _cookieJar.Add(uri, new Cookie("tree1State", ""));
+
+
+            System.Diagnostics.Debug.WriteLine("\n=== Cookies for sacombank ===");
+            foreach (Cookie cookie in _cookieJar.GetCookies(uri))
+            {
+                System.Diagnostics.Debug.WriteLine($"{cookie.Name}={cookie.Value}");
+            }
+         //   var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            string html = await response.Content.ReadAsStringAsync();
+            MessageBox.Show(html);
+            File.WriteAllText("transferPage.html", html);
+            //_doc = new HtmlAgilityPack.HtmlDocument();
+            //_doc.LoadHtml(html);
+            updateHtml(html);
+        }
     }
 }

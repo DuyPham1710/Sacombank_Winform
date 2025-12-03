@@ -140,6 +140,7 @@
             txtUsername.PlaceholderText = "TÊN ĐĂNG NHẬP";
             txtUsername.Size = new Size(250, 27);
             txtUsername.TabIndex = 0;
+            txtUsername.Text = "20351604.ERPTAO";
             // 
             // pictureBox1
             // 

@@ -17,25 +17,25 @@ namespace SacombankWinform
     public partial class FHome : Form
     {
         SacombankService _sacombankService;
-        private string html;
         private Form activeChildForm = null;
         List<AccountInfo> accounts;
-        public FHome(SacombankService sacombankService, string html)
+        private string actionUrl;
+        public FHome(SacombankService sacombankService, string actionUrl)
         {
             InitializeComponent();
             _sacombankService = sacombankService;
-            this.html = html;
             accounts = new List<AccountInfo>();
+            this.actionUrl = actionUrl;
         }
         private async void FHome_Load(object sender, EventArgs e)
         {
-            _sacombankService.updateHtml(html);
+          //  _sacombankService.updateHtml(html);
 
-            string urlFinacleRiaRequest = _sacombankService.getUrlBalanceFromHtml(GlConstants.ORIGINAL_BASE_URL);
+            string urlFinacleRiaRequest = _sacombankService.getBaseUrlFromScriptHtml(GlConstants.ORIGINAL_BASE_URL, "CorporateUserDashboardUX5_WAC85__1");
 
             try
             {
-                string data = await _sacombankService.GetBalanceAsync(urlFinacleRiaRequest);
+                string data = await _sacombankService.SendSacombankRequestAsync(urlFinacleRiaRequest);
                 if (!string.IsNullOrEmpty(data))
                 {
                     accounts = _sacombankService.ExtractAccountInfo(data);
@@ -123,7 +123,7 @@ namespace SacombankWinform
 
         private void transferToOtherBankToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var transferForm = new TransferToOtherBankForm(accounts);
+            var transferForm = new TransferToOtherBankForm(_sacombankService, actionUrl);
             OpenChildForm(transferForm);
         }
 
@@ -132,6 +132,7 @@ namespace SacombankWinform
             var dashboard = new DashboardForm(accounts);
             OpenChildForm(dashboard);
         }
+
         //// Gọi khi form đóng để dispose client
         //protected override void OnFormClosed(FormClosedEventArgs e)
         //{
